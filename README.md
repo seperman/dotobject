@@ -126,3 +126,15 @@ value this.part1
 >>> this.flush()
 >>> bb = this.part1 # Will evaluate this.part1 again
 ```
+
+## Documentation
+
+<http://dotobject.readthedocs.org/en/latest/>
+
+## Author
+
+Seperman (Sep Ehr)
+
+Github:  <https://github.com/seperman>
+Linkedin:  <http://www.linkedin.com/in/sepehr>
+ZepWorks:   <http://www.zepworks.com>
