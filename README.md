@@ -2,7 +2,7 @@
 Dot Notation Object
 
 ![Python Versions](https://img.shields.io/pypi/pyversions/dotobject.svg?style=flat)
-![Doc](https://readthedocs.org/projects/dotobject/badge/?version=latest)
+[![Documentation Status](https://readthedocs.org/projects/dotobject/badge/?version=latest)](http://dotobject.readthedocs.org/en/latest/?badge=latest)
 ![License](https://img.shields.io/pypi/l/dotobject.svg?version=latest)
 [![Build Status](https://travis-ci.org/seperman/dotobject.svg?branch=master)](https://travis-ci.org/seperman/dotobject)
 
