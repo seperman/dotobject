@@ -6,7 +6,9 @@
 Welcome to DotObject's documentation!
 ====================================
 
-**DotObject: Deep Difference of dictionaries, iterables and almost any other object recursively.**
+**DotObject: Dot lets you define objects in dot notation format with save and load methods.**
+
+Compatibility: Python 2.7, 3.3, 3.4, 3.5
 
 ************
 Installation

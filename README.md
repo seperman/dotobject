@@ -6,10 +6,7 @@ Dot Notation Object
 ![License](https://img.shields.io/pypi/l/dotobject.svg?version=latest)
 [![Build Status](https://travis-ci.org/seperman/dotobject.svg?branch=master)](https://travis-ci.org/seperman/dotobject)
 
-Dot lets you define objects in dot notation format.
-
-You need to subclass Dot and define your own load and save methods in order to use it.
-
+Dot lets you define objects in dot notation format that can be loaded/saved to external resources when needed.
 
 ## Background
 

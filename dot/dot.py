@@ -136,14 +136,9 @@ class Registry(object):
 class Dot(object):
 
     r"""
-    **DotObject v 1.0.0**
+    Dot Notation Object.
 
-    Dot Notation Object
-
-    Dot lets you define objects in dot notation format.
-
-    You need to subclass Dot and define your own load and save methods in order to use it.
-
+    Dot lets you define objects in dot notation format and load/save them to external resource when needed.
 
     **Background**
 
