@@ -15,7 +15,6 @@ And as soon as it detects you are retrieving the value, it gets the latest versi
 So the Dot notation object is basically a lazy object that once its "load" and "save" methods are defined, it will run those methods when the object is saved or retrieved.
 
 
-
 ## Installation
 
 ### Install from PyPi:
