@@ -11,9 +11,17 @@ Dot lets you define objects in dot notation format.
 You need to subclass Dot and define your own load and save methods in order to use it.
 
 
-##Installation
+## Background
 
-###Install from PyPi:
+Dot Notation object was originally designed to be the base library for a Redis client for Python. Thus the names 'load' and 'save' come from. The idea was to have python object that simply by writing obj.item="value", it sets the redis key "obj.item" with "value" value.
+And as soon as it detects you are retrieving the value, it gets the latest version from Redis. But in the mean time, it gives you a lazy object till it actually needs the value from Redis.
+So the Dot notation object is basically a lazy object that once its "load" and "save" methods are defined, it will run those methods when the object is saved or retrieved.
+
+
+
+## Installation
+
+### Install from PyPi:
 
     pip install dotobject
 
