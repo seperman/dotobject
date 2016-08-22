@@ -1,16 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+from __future__ import absolute_import
+from __future__ import print_function
 
 """
 Subclass Dot to use this module
 """
 from collections import MutableMapping
 
-# workaround Py2, Py3 and running this module inidividually for doctests dealing with relative imports
-try:
-    from .borrowed_lazy import LazyObject, empty
-except:
-    from borrowed_lazy import LazyObject, empty
+from dot.borrowed_lazy import LazyObject, empty
 
 import re
 import threading
@@ -20,13 +18,13 @@ import weakref
 # Workaround for http://bugs.python.org/issue12370
 _super = super
 
+NATIVE_ATTRS = ("_wrapped", "_item_key", "_registry", "_load_wrapper",
+                "_save", "_threadLock")
+
 
 class LazyDot(LazyObject):
 
     "LazyDot is the actual object that gets passed around."
-
-    _native_attrs = (
-        "_wrapped", "_item_key", "_registry", "_load_wrapper", "_save", "_threadLock")
 
     def __init__(self, item, registry, load_wrapper, save):
         # Note: if you are adding attributes here, make sure to add it
@@ -47,7 +45,7 @@ class LazyDot(LazyObject):
         _super(LazyDot, self).__init__()
 
     def __getattr__(self, name):
-        if name in self._native_attrs:
+        if name in NATIVE_ATTRS:
             result = self.__dict__[name]
         elif self._wrapped is empty:
             name = self._registry._checkint(name)
@@ -67,7 +65,7 @@ class LazyDot(LazyObject):
         return result
 
     def __setattr__(self, name, value):
-        if name in self._native_attrs:
+        if name in NATIVE_ATTRS:
             # Assign to __dict__ to avoid infinite __setattr__ loops.
             self.__dict__[name] = value
         else:
@@ -126,6 +124,13 @@ class Registry(object):
             self.evaluated_items)
 
     def _checkint(self, item):
+        """
+        Gets int value from item name.
+        Bascially Python does not let you have attribute names
+        that are integer.
+        Here we check to see if the attribute name is `int_starts_with` + integer.
+        Then extract the integer part.
+        """
         try:
             item = self.int_regex.search(item).group(1)
         except AttributeError:
@@ -253,19 +258,33 @@ class Dot(object):
             item, registry=self.registry, load_wrapper=self._load_wrapper, save=self.save)
         return child
 
+    def _lazyset_immediate_child(self, item, value):
+        pass
+        # item = self.registry._checkint(item)
+        # child = LazyDot(
+        #     item, registry=self.registry, load_wrapper=self._load_wrapper, save=self.save)
+
     def __getattr__(self, item):
         return self._lazyget(item)
 
     def __getitem__(self, item):
         return self._lazyget(item)
 
+    def __setattr__(self, name, value):
+        if name in NATIVE_ATTRS:
+            # Assign to __dict__ to avoid infinite __setattr__ loops.
+            self.__dict__[name] = value
+        else:
+            import ipdb; ipdb.set_trace()
+            pass
+
     def _load_wrapper(self):
         self.threadLock.acquire()
-        paths_list_to_eval = tuple(
+        paths_to_eval = tuple(
             set(i._item_key for i in self.registry.object_to_eval.values()))
         self.registry.object_to_eval = weakref.WeakValueDictionary()
 
-        new_items = self.load(paths_list_to_eval)
+        new_items = self.load(paths_to_eval)
 
         if isinstance(new_items, MutableMapping):
             self.registry.evaluated_items.update(new_items)

@@ -7,7 +7,7 @@ python -m unittest discover
 """
 import unittest
 
-from dot import Dot
+from dot import Dot, LazyDot
 
 
 class This(Dot):
@@ -18,6 +18,8 @@ class This(Dot):
         self.items = {}
 
     def load(self, paths):
+        # imagine counter as being a hit counter to the external resource
+        # to get the object.
         self.counter += 1
         return {i: self.items[i] if i in self.items else "value %s" % i for i in paths}
 
@@ -83,19 +85,23 @@ class DotTestCase(unittest.TestCase):
         str(dd)
         self.assertEqual(this.counter, 2)
 
-    def test_save_one_object(self):
+    def test_save_one_object_long_path(self):
         this = This()
         this.part1.part2.part3.part4 = "new value"
         aa = this.part1.part2.part3.part4
         self.assertEqual(str(aa), "new value")
         self.assertEqual(this.counter, 0)
+        # Even though the str(aa) returns string,
+        # it should be still an instance of LazyDot
+        self.assertIsInstance(aa, LazyDot)
 
-    def test_save_one_object2(self):
+    def test_save_one_object_part1(self):
         this = This()
         this.hello = "new value"
         aa = this.hello
         self.assertEqual(str(aa), "new value")
         self.assertEqual(this.counter, 0)
+        self.assertIsInstance(aa, LazyDot)
 
     def test_flush(self):
         this = This()

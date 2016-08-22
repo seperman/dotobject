@@ -1,1 +1,1 @@
-from .dot import Dot
+from .dot import Dot, LazyDot
