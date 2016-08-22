@@ -16,6 +16,7 @@ class This(Dot):
         super(This, self).__init__(*args, **kwargs)
         self.counter = 0
         self.items = {}
+        self.setup()
 
     def load(self, paths):
         # imagine counter as being a hit counter to the external resource
