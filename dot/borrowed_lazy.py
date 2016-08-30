@@ -1,5 +1,5 @@
 """
-This code is borrowed from Django
+This code is borrowed from Django and extended.
 """
 from sys import version
 py3 = version[0] == '3'
@@ -126,3 +126,21 @@ class LazyObject(object):
     __len__ = new_method_proxy(len)
     __contains__ = new_method_proxy(operator.contains)
 
+    # Additions for DotObject
+    __gt__ = new_method_proxy(operator.gt)
+    __lt__ = new_method_proxy(operator.lt)
+    __ge__ = new_method_proxy(operator.ge)
+    __le__ = new_method_proxy(operator.le)
+    __add__ = new_method_proxy(operator.add)
+    __sub__ = new_method_proxy(operator.sub)
+    __mul__ = new_method_proxy(operator.mul)
+    __floordiv__ = new_method_proxy(operator.floordiv)
+    __div__ = new_method_proxy(operator.truediv)
+    __truediv__ = new_method_proxy(operator.truediv)
+    __mod__ = new_method_proxy(operator.mod)
+    __pow__ = new_method_proxy(operator.pow)
+    __lshift__ = new_method_proxy(operator.lshift)
+    __rshift__ = new_method_proxy(operator.rshift)
+    __and__ = new_method_proxy(operator.and_)
+    __or__ = new_method_proxy(operator.or_)
+    __xor__ = new_method_proxy(operator.xor)

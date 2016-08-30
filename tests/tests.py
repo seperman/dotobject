@@ -117,3 +117,23 @@ class DotTestCase(unittest.TestCase):
         dd = this.part10
         str(dd)
         self.assertEqual(this.counter, 2)
+
+    def test_number(self):
+        this = This()
+        this.num = 10
+        self.assertIsInstance(this.num, LazyDot)
+        self.assertEqual(this.num, 10)
+
+    def test_number_comparison(self):
+        this = This()
+        this.num = 10
+        self.assertTrue(this.num > 8)
+        self.assertTrue(this.num < 11)
+        self.assertTrue(this.num <= 12)
+        self.assertTrue(this.num >= 10)
+        self.assertFalse(this.num > 10)
+
+    def test_number_math(self):
+        this = This()
+        this.num = 10
+        self.assertEqual(this.num * 2, 20)
