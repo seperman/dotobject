@@ -20,7 +20,7 @@ Install from PyPi::
 
 
 **************
-DotObject 1.2.0
+DotObject 1.2.1
 **************
 
 .. toctree::

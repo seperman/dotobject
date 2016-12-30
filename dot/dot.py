@@ -293,6 +293,8 @@ class Dot(object):
         else:
             self._lazyset_immediate_child(item, value)
 
+    __setitem__ = __setattr__
+
     def _load_wrapper(self):
         self._threadLock.acquire()
         paths_to_eval = tuple(

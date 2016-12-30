@@ -54,6 +54,13 @@ class DotTestCase(unittest.TestCase):
         aa = this['part1.part2.part4']
         self.assertEqual(str(aa), 'value this.part1.part2.part4')
 
+    def test_setitem(self):
+        this = This()
+        text = "blah blah"
+        this['part1.part2.part4'] = text
+        aa = this.part1.part2.part4
+        self.assertEqual(aa, text)
+
     def test_change_root_name(self):
         this = This(root_name='my')
         aa = this.part1.part2.part3.part4

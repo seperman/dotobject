@@ -1,4 +1,4 @@
-**DotObject v 1.2.0**
+**DotObject v 1.2.1**
 
 Dot Notation Object
 
@@ -78,6 +78,11 @@ Dealing with Dots like dictionary keys
     >>> dd = this['part1.%s.part4' % 100]
     >>> dd
     <Lazy object: this.part1.100.part4>
+    >>> path = 'part1.part2'
+    >>> this[path] = 'This was set by a dynamic key.'
+    >>> this.path
+    This was set by a dynamic key.
+
 
 Saving Dots
     >>> this.part1.part2.part3.part4 = "new value"

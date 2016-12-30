@@ -13,7 +13,7 @@ except:
     long_description = "Dot notation object."
 
 setup(name='dotobject',
-      version='1.2.0',
+      version='1.2.1',
       description='Dot notation object',
       url='https://github.com/seperman/dotobject',
       download_url='https://github.com/seperman/dotobject/tarball/master',

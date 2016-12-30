@@ -1,4 +1,4 @@
-# DotObject v1.2.0
+# DotObject v1.2.1
 Dot Notation Object
 
 ![Python Versions](https://img.shields.io/pypi/pyversions/dotobject.svg?style=flat)
@@ -82,6 +82,7 @@ value this.part1.part2.120
 ```
 
 ### Dealing with Dots like dictionary keys
+This can be used for setting dynamic key names.
 
 ```python
 >>> cc = this['part1.part2.part4']
@@ -90,6 +91,10 @@ value this.part1.part2.120
 >>> dd = this['part1.%s.part4' % 100]
 >>> dd
 <Lazy object: this.part1.100.part4>
+>>> path = 'part1.part2'
+>>> this[path] = 'This was set by a dynamic key.'
+>>> this.path
+This was set by a dynamic key.
 ```
 
 ### Saving Dots
