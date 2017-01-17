@@ -72,6 +72,10 @@ class LazyObject(object):
             self._setup()
         return self._wrapped.__dict__
 
+    def __verifystate(self):
+        if self._wrapped is empty:
+            self._setup()
+
     # Python 3.3 will call __reduce__ when pickling; this method is needed
     # to serialize and deserialize correctly.
     @classmethod
@@ -133,10 +137,27 @@ class LazyObject(object):
     __le__ = new_method_proxy(operator.le)
     __add__ = new_method_proxy(operator.add)
     __sub__ = new_method_proxy(operator.sub)
+
+    def __rsub__(self, other):
+        self.__verifystate()
+        return other - self._wrapped
+
     __mul__ = new_method_proxy(operator.mul)
-    __floordiv__ = new_method_proxy(operator.floordiv)
+    __rmul__ = new_method_proxy(operator.mul)
     __div__ = new_method_proxy(operator.truediv)
+
+    def __rdiv__(self, other):
+        self.__verifystate()
+        return operator.truediv(other, self._wrapped)
+
     __truediv__ = new_method_proxy(operator.truediv)
+    __rtruediv__ = __rdiv__
+    __floordiv__ = new_method_proxy(operator.floordiv)
+
+    def __rfloordiv__(self, other):
+        self.__verifystate()
+        return operator.floordiv(other, self._wrapped)
+
     __mod__ = new_method_proxy(operator.mod)
     __pow__ = new_method_proxy(operator.pow)
     __lshift__ = new_method_proxy(operator.lshift)

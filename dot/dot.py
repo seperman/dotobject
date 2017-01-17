@@ -330,7 +330,6 @@ class Dot(object):
     def save(self, path, value):
         """
         Must be implemented by subclasses.
-
         The save method is called to save a value for a path.
 
         **Parameters**
@@ -342,10 +341,20 @@ class Dot(object):
         raise Exception(
             "Save function must be implemented before you can use it.")
 
+    def delete(self, path):
+        """
+        Must be implemented by subclasses.
+        The delete method is called to delete a path.
+
+        **Parameters**
+
+        path : String.
+        """
+        raise Exception(
+            "Save function must be implemented before you can use it.")
+
     def flush(self):
-
         "Emptys the Dot cache"
-
         self._registry.evaluated_items = {}
 
 if __name__ == "__main__":

@@ -6,6 +6,7 @@ To run the test, run this in the this of repo:
 python -m unittest discover
 """
 import unittest
+import json
 
 from dot import Dot, LazyDot
 
@@ -140,7 +141,38 @@ class DotTestCase(unittest.TestCase):
         self.assertTrue(this.num >= 10)
         self.assertFalse(this.num > 10)
 
-    def test_number_math(self):
+    def test_number_multiply(self):
         this = This()
         this.num = 10
         self.assertEqual(this.num * 2, 20)
+        self.assertEqual(2 * this.num, 20)
+
+    def test_number_minus(self):
+        this = This()
+        this.num = 10
+        self.assertEqual(this.num - 2, 8)
+        self.assertEqual(2 - this.num, -8)
+
+    def test_number_add(self):
+        this = This()
+        this.num = 10
+        self.assertEqual(this.num + 2, 12)
+
+    def test_number_divide(self):
+        this = This()
+        this.num = 10
+        self.assertEqual(this.num / 2, 5)
+        self.assertEqual(10 / this.num, 1)
+
+    def test_assignment_to_another_dot(self):
+        this = This()
+        this.part1 = {"a": "b"}
+        this.flush()
+        this.part2 = this.part1
+        this.flush()
+        self.assertEqual(this.part2, {"a": "b"})
+
+    def test_json_serializable(self):
+        this = This()
+        this.part1 = {"a": "b"}
+        self.assertEqual(json.dumps(this.part1), '{"a": "b"}')
