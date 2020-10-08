@@ -13,7 +13,7 @@ except:
     long_description = "Dot notation object."
 
 setup(name='dotobject',
-      version='1.2.1',
+      version='1.2.2',
       description='Dot notation object',
       url='https://github.com/seperman/dotobject',
       download_url='https://github.com/seperman/dotobject/tarball/master',
@@ -31,6 +31,9 @@ setup(name='dotobject',
           "Programming Language :: Python :: 3.3",
           "Programming Language :: Python :: 3.4",
           "Programming Language :: Python :: 3.5",
+          "Programming Language :: Python :: 3.6",
+          "Programming Language :: Python :: 3.7",
+          "Programming Language :: Python :: 3.8",
           "Development Status :: 5 - Production/Stable",
           "License :: OSI Approved :: MIT License"
       ],

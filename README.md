@@ -1,4 +1,4 @@
-# DotObject v1.2.1
+# DotObject v1.2.2
 Dot Notation Object
 
 ![Python Versions](https://img.shields.io/pypi/pyversions/dotobject.svg?style=flat)
@@ -141,4 +141,4 @@ Seperman (Sep Ehr)
 
 Github:  <https://github.com/seperman>
 Linkedin:  <http://www.linkedin.com/in/sepehr>
-ZepWorks:   <http://www.zepworks.com>
+ZepWorks:   <https://zepworks.com>
