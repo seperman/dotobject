@@ -132,7 +132,7 @@ class Registry(object):
         Then extract the integer part.
         """
         try:
-            item = self.int_regex.search(item).group(1)
+            item = self.int_regex.search(str(item)).group(1)
         except AttributeError:
             pass
         return item

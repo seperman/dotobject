@@ -54,6 +54,11 @@ class TestDot:
         aa = this['part1.part2.part4']
         assert str(aa) == 'value this.part1.part2.part4'
 
+    def test_get_int_item(self):
+        this = This()
+        aa = this[123]
+        assert str(aa) == 'value this.123'
+
     def test_setitem(self):
         this = This()
         text = "blah blah"
