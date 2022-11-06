@@ -1,4 +1,4 @@
-**DotObject v 1.2.2**
+**DotObject v 1.3.0**
 
 Dot Notation Object
 

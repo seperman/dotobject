@@ -9,11 +9,11 @@ if os.environ.get('USER', '') == 'vagrant':
 try:
     with open('README.txt') as file:
         long_description = file.read()
-except:
+except Exception:
     long_description = "Dot notation object."
 
 setup(name='dotobject',
-      version='1.2.2',
+      version='1.3.0',
       description='Dot notation object',
       url='https://github.com/seperman/dotobject',
       download_url='https://github.com/seperman/dotobject/tarball/master',
@@ -27,10 +27,11 @@ setup(name='dotobject',
           "Intended Audience :: Developers",
           "Operating System :: OS Independent",
           "Topic :: Software Development",
-          "Programming Language :: Python :: 3.5",
-          "Programming Language :: Python :: 3.6",
           "Programming Language :: Python :: 3.7",
           "Programming Language :: Python :: 3.8",
+          "Programming Language :: Python :: 3.9",
+          "Programming Language :: Python :: 3.10",
+          "Programming Language :: Python :: 3.11",
           "Development Status :: 5 - Production/Stable",
           "License :: OSI Approved :: MIT License"
       ],

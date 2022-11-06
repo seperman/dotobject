@@ -6,7 +6,7 @@ from __future__ import print_function
 """
 Subclass Dot to use this module
 """
-from collections import MutableMapping
+from collections.abc import MutableMapping
 
 from dot.borrowed_lazy import LazyObject, empty
 
