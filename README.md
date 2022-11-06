@@ -1,4 +1,4 @@
-# DotObject v1.3.0
+# DotObject v1.3.1
 Dot Notation Object
 
 ![Python Versions](https://img.shields.io/pypi/pyversions/dotobject.svg?style=flat)
